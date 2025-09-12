@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('SCM GitHub') {
             steps {
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/mimaraslan/devops-03-pipeline-aws']])
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sadikgok/devops-03-pipeline-aws']])
             }
         }
         stage('Test Maven') {
@@ -38,6 +38,7 @@ pipeline {
                 }
             }
         }
+        /*
         stage("SonarQube Analysis") {
             steps {
                 script {
@@ -52,7 +53,7 @@ pipeline {
                 }
             }
         }
-        /*
+        
 
          stage('Docker Image') {
              steps {
