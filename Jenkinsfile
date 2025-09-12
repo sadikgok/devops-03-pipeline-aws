@@ -16,20 +16,24 @@ pipeline {
 
         stage('Test Maven') {
             steps {
-                if(isUnix){
-                    sh 'mvn test'
-                }else{
-                    bat 'mvn test'}
-            }
+                script{
+                    if(isUnix()){
+                        sh 'mvn test'
+                    }else{
+                        bat 'mvn test'}
+                    }
+                }
         }
 
 
         stage('Build Maven') {
             steps {
-                if(isUnix){
-                    sh 'mvn clean install'}
-                else{
-                    bat 'mvn clean install'}
+                script{
+                    if(isUnix()){
+                        sh 'mvn clean install'}
+                    else{
+                        bat 'mvn clean install'}
+                }
             }
         }
 
