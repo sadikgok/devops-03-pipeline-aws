@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         maven 'Maven3'
-        jdk 'Java17'
+        jdk 'Java21'
     }
 
     stages {
@@ -29,7 +29,7 @@ pipeline {
             }
         }
 
-
+/*
         stage('Docker Image') {
             steps {
             //    sh 'docker build  -t mimaraslan/devops-application:latest   .'
@@ -73,8 +73,7 @@ pipeline {
                
             }
         }
-
-
+        */
     }
 
 }
