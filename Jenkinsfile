@@ -45,11 +45,19 @@ pipeline {
                     withSonarQubeEnv(credentialsId: 'jenkins-sonarqube-token') {
                         if (isUnix()) {
                             // Linux or MacOS
-                            sh "mvn sonar:sonar"
+                            sh "mvn sonar: sonar"
                         } else {
-                            bat 'mvn sonar:sonar'  // Windows
+                            bat 'mvn sonar: sonar'  // Windows
                         }
                     }
+                }
+            }
+        }
+
+         stage("Quality Gate") {
+            steps {
+                script {
+                    waitForQualityGate abortPipeline: false,credentialsId: 'jenkins-sonarqube-token'
                 }
             }
         }
@@ -57,8 +65,8 @@ pipeline {
 /*
          stage('Docker Image') {
              steps {
-             //    sh 'docker build  -t mimaraslan/devops-application:latest   .'
-                 bat 'docker build  -t mimaraslan/devops-application:latest   .'
+             //    sh 'docker build  -t mimaraslan/devops-application: latest   .'
+                 bat 'docker build  -t mimaraslan/devops-application: latest   .'
              }
          }
 
